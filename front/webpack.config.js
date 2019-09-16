@@ -49,6 +49,7 @@ module.exports = {
         port: 3000,
         contentBase: './dist',
         hot: true,
+        historyApiFallback: true,
         proxy: {
             '/api/*': {
                 target: 'http://localhost:8080',

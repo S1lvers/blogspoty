@@ -18,6 +18,7 @@ class App extends Component {
                             <Container fluid className={"content-layout"}>
                                 <Route exact path="/" component={Main}/>
                                 <Route exact path="/rising" component={Main}/>
+                                <Route exact path="/popular" component={Main}/>
                             </Container>
                         </div>
                     </div>

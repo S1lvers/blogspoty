@@ -1,13 +1,30 @@
-.left-nav-item {
+.left-nav-item.selected {
+    background-color: #e5e5e5;
 
+    &:hover {
+
+        background-color: #dbdbdb;
+    }
+
+    svg {
+        color: #3437ff;
+    }
+}
+
+.left-nav-item {
     display: inline-block;
     padding: 0 24px;
     min-width: 0;
     max-width: 100%;
+    width: 100%;
     text-decoration: none;
+    color: #606060;
+    //color: #0d0d0d;
 
     &:hover {
         text-decoration: none;
+        color: #606060;
+        background-color: #ececec;
     }
 
 
@@ -31,8 +48,11 @@
             overflow: hidden;
             white-space: nowrap;
             margin-right: 24px;
-            color: #0d0d0d;
         }
+    }
+
+    &:last-child {
+        margin-bottom: 12px;
     }
 }
 

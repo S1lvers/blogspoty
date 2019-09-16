@@ -2,7 +2,7 @@ import './LeftNavBar.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {LeftNavBarBlock as Block} from "./LeftNavBarBlock/LeftNavBarBlock";
-import NavButton from "../../components/buttons/NavButton/NavButton";
+import NavButton from "./NavButton/NavButton";
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 class LeftNavBar extends Component {
@@ -12,6 +12,7 @@ class LeftNavBar extends Component {
                 <Block>
                     <NavButton title={"Главная"} alt={"Главная"} linkTo={"/"} icon={faCoffee}/>
                     <NavButton title={"Набирающие популярность"} alt={"Набирающие популярность"} linkTo={"/rising"} icon={faCoffee}/>
+                    <NavButton title={"Популярное"} alt={"Популярное"} linkTo={"/popular"} icon={faCoffee}/>
                 </Block>
             </div>
         )
