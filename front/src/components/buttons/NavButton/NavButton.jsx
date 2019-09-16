@@ -1,26 +1,30 @@
-import './LeftNavBar.css';
+import './NavButton.less';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Container} from 'react-bootstrap';
 
 class NavButton extends Component {
     render() {
-        const props = this.props
+        const props = this.props;
         return (
-            <Link to={props.to} alt={props.alt} className={"nav-button"}>
-                <div className={"icon"}>{props.icon}</div>
-                <div className={"title"}>{props.title}</div>
+            <Link to={props.linkTo} title={props.alt} className={"left-nav-item"} tabindex={-1}>
+                <div className={"left-nav-btn d-flex align-items-center"}>
+                    <FontAwesomeIcon icon={props.icon} size={124}/>
+                    <span>{props.title}</span>
+                </div>
             </Link>
         )
     }
 }
 
 NavButton.propTypes = {
-    icon: PropTypes.string.required,
-    title: PropTypes.string.required,
-    to: PropTypes.string.required,
+    icon: PropTypes.object,
+    title: PropTypes.string,
+    linkTo: PropTypes.string,
     alt: PropTypes.string,
-    target: PropTypes.string
+    target: PropTypes.string //target like _blank
 };
 
 

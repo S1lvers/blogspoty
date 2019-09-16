@@ -1,13 +1,18 @@
-import './LeftNavBar.css';
+import './LeftNavBar.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
+import {LeftNavBarBlock as Block} from "./LeftNavBarBlock/LeftNavBarBlock";
+import NavButton from "../../components/buttons/NavButton/NavButton";
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 class LeftNavBar extends Component {
     render() {
         return (
             <div className={"left-nav-bar"}>
-                <div className={"spacer"}/>
-                <div className={"content"}></div>
+                <Block>
+                    <NavButton title={"Главная"} alt={"Главная"} linkTo={"/"} icon={faCoffee}/>
+                    <NavButton title={"Набирающие популярность"} alt={"Набирающие популярность"} linkTo={"/rising"} icon={faCoffee}/>
+                </Block>
             </div>
         )
     }

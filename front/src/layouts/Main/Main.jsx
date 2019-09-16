@@ -5,7 +5,7 @@ import connect from "react-redux/es/connect/connect";
 class Main extends Component {
     render() {
         return (
-            <div className={"left-nav-bar"}>
+            <div className={"main"}>
 
             </div>
         )
