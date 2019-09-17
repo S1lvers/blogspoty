@@ -11,7 +11,9 @@ class NavButton extends Component {
         return (
             <NavLink exact to={props.linkTo} title={props.alt} activeClassName={"selected"} className={"left-nav-item"} tabindex={-1}>
                 <div className={"left-nav-btn d-flex align-items-center"}>
-                    <FontAwesomeIcon icon={props.icon} size={124}/>
+                    <div className={"icon"}>
+                        <FontAwesomeIcon icon={props.icon}/>
+                    </div>
                     <span>{props.title}</span>
                 </div>
             </NavLink>

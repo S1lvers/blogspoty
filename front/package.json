@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-regular-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "autoprefixer": "^9.6.1",
@@ -27,6 +28,7 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "typeface-luckiest-guy": "0.0.72",
     "webpack": "^4.40.1"
   },
   "scripts": {
@@ -58,6 +60,7 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "react-hot-loader": "^4.12.13",
     "webpack-cli": "^3.3.8",

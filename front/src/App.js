@@ -1,8 +1,8 @@
 import './App.css';
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import TopNavBar from "./navbar/TopNavBar/TopNavBar";
-import LeftNavBar from "./navbar/LeftNavBar/LeftNavBar";
+import TopNavBar from "./navbars/TopNavBar/TopNavBar";
+import LeftNavBar from "./navbars/LeftNavBar/LeftNavBar";
 import {Container} from 'react-bootstrap';
 import Main from "./layouts/Main/Main";
 
