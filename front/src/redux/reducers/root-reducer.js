@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux';
+import applicationState from "./applicationState";
+
+
 
 const rootReducer = combineReducers({
-    //TODO add reducers here
+    applicationState
 });
 
 export default rootReducer;

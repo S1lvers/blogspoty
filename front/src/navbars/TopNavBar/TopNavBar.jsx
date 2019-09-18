@@ -5,13 +5,22 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {Container} from 'react-bootstrap';
 import {NavLink} from "react-router-dom";
+import {ACTION_COLLAPSED_NAVBAR} from '../../redux/reducers/applicationState'
 
 class TopNavBar extends Component {
+
+    collapseNavBar = () => {
+        this.props.dispatch({
+            type: ACTION_COLLAPSED_NAVBAR,
+            collapsedNavBar: !this.props.applicationState.collapsedNavBar
+        })
+    };
+
     render() {
         return (
             <div className={"top-nav-bar"}>
                 <div className={"left-nav"}>
-                    <div className={"bars"}>
+                    <div className={"bars"} onClick={this.collapseNavBar}>
                         <FontAwesomeIcon icon={faBars}/>
                     </div>
                     <NavLink className={"logo"} exact to={"/"} title={"Главная страница BlogHole"} tabindex={-1}>
@@ -29,10 +38,14 @@ class TopNavBar extends Component {
     }
 }
 
-TopNavBar.propTypes = {};
+TopNavBar.propTypes = {
+
+};
 
 function mapStateToProps(store) {
-    return {};
+    return {
+        applicationState: store.applicationState
+    };
 }
 
 export default (connect(mapStateToProps)(TopNavBar));

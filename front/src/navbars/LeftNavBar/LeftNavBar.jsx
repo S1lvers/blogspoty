@@ -4,13 +4,14 @@ import connect from "react-redux/es/connect/connect";
 import {LeftNavBarBlock as Block} from "./LeftNavBarBlock/LeftNavBarBlock";
 import NavButton from "../NavButton/NavButton";
 import { faCoffee, faBars } from '@fortawesome/free-solid-svg-icons'
+import applicationState from "../../redux/reducers/applicationState";
 
 class LeftNavBar extends Component {
     render() {
-        //const { collapsed } = this.props.leftNavBar;
+        const { collapsedNavBar } = this.props.applicationState;
+        const navBarClassName = collapsedNavBar ? "left-nav-bar collapsed" : "left-nav-bar expanded";
         return (
-
-            <div className={"left-nav-bar"}>
+            <div className={navBarClassName}>
                 <Block>
                     <NavButton title={"Главная"} alt={"Главная"} linkTo={"/"} icon={faCoffee}/>
                     <NavButton title={"Набирающие популярность"} alt={"Набирающие популярность"} linkTo={"/rising"} icon={faCoffee}/>
@@ -27,7 +28,7 @@ LeftNavBar.propTypes = {
 
 function mapStateToProps(store) {
     return {
-        leftNavBar: store.leftNavBar
+        applicationState: store.applicationState
     };
 }
 
