@@ -1,11 +1,9 @@
-.left-nav-bar.expanded {
-  max-width: 240px;
-  height: 100%;
-  transition: 0.3s;
-}
-
-.left-nav-bar.collapsed {
-  max-width: 72px !important;
+.bottom-nav-bar {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 
   .left-nav-item {
 
@@ -27,14 +25,5 @@
   a {
     padding-bottom: 8px;
     padding-top: 8px;
-  }
-}
-
-
-// Просмотр в режиме телефона
-@media (max-width: 681px) {
-
-  .left-nav-bar{
-    display: none;
   }
 }
