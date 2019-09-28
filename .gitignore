@@ -3,3 +3,6 @@
 /gradle
 /gradlew
 /gradlew.bat
+/build/tmp/bootWar/MANIFEST.MF
+/build/tmp/war/MANIFEST.MF
+/out
