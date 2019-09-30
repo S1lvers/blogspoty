@@ -1,29 +1,13 @@
 import './Main.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
+import BloggerCard from '../../components/card/BloggerCard'
 
 class Main extends Component {
     render() {
         return (
             <div className={"content main d-flex flex-column"}>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4 mb-4"}>123</div>
-                <div className={"mt-4"}>123</div>
+                <BloggerCard name={"Никита Мальков"}/>
             </div>
         )
     }

@@ -24,7 +24,7 @@ class TopNavBar extends Component {
                         <FontAwesomeIcon icon={faBars}/>
                     </div>
                     <NavLink className={"logo"} exact to={"/"} title={"Главная страница BlogHole"}>
-                        <span>BLOGHOLE</span>
+                        <span>BLOGFUSION</span>
                     </NavLink>
                 </div>
                 <div className={"center-nav"}>
