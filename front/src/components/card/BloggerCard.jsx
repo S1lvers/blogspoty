@@ -2,7 +2,7 @@ import './BloggerCard.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import PropTypes from 'prop-types';
-import { faFacebook, faFacebookF } from "@fortawesome/free-brands-svg-icons"
+import { faFacebook, faFacebookF, faInstagram, faVk, faYoutube, faTwitch, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 class BloggerCard extends Component {
@@ -18,25 +18,47 @@ class BloggerCard extends Component {
                         {this.props.name}
                     </div>
                     <div className={"blogger-card__tags"}>
-                        Тэги будут тут позже
+                        #lifeblogger #trashblog #santabarbarablog
                     </div>
-                    <div className={"blogger-card__inf"}>
-                        <div className="profile-card-inf__item">
-                            <div className="profile-card-inf__title">1598</div>
-                            <div className="profile-card-inf__txt">Followers</div>
+                    <div className={"blogger-card__inf container"}>
+                        <div className="blogger-card__inf-item">
+                            <div className="blogger-card__inf-title">1598</div>
+                            <div className="blogger-card__inf-txt">Followers</div>
                         </div>
-                        <div className="profile-card-inf__item">
-                            <div className="profile-card-inf__title">1598</div>
-                            <div className="profile-card-inf__txt">Followers</div>
+                        <div className="blogger-card__inf-item">
+                            <div className="blogger-card__inf-title">1598</div>
+                            <div className="blogger-card__inf-txt">Followers</div>
                         </div>
-                        <div className="profile-card-inf__item">
-                            <div className="profile-card-inf__title">1598</div>
-                            <div className="profile-card-inf__txt">Followers</div>
+                        <div className="blogger-card__inf-item">
+                            <div className="blogger-card__inf-title">1598</div>
+                            <div className="blogger-card__inf-txt">Followers</div>
                         </div>
                     </div>
                     <div className={"blogger-card__social"}>
-                        <FontAwesomeIcon icon={faFacebook}/>
-                        <FontAwesomeIcon icon={faFacebookF}/>
+                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item facebook"}>
+                            <FontAwesomeIcon icon={faFacebookF}/>
+                        </a>
+
+                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item instagram"}>
+                            <FontAwesomeIcon icon={faInstagram}/>
+                        </a>
+
+                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item vk"}>
+                            <FontAwesomeIcon icon={faVk}/>
+                        </a>
+
+                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item youtube"}>
+                            <FontAwesomeIcon icon={faYoutube}/>
+                        </a>
+
+                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item twitch"}>
+                            <FontAwesomeIcon icon={faTwitch}/>
+                        </a>
+
+                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item twitter"}>
+                            <FontAwesomeIcon icon={faTwitter}/>
+                        </a>
+
                     </div>
                 </div>
             </div>

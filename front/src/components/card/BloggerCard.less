@@ -1,5 +1,6 @@
 .blogger-card {
 
+  font-family: 'Quicksand', sans-serif;
   width: 100%;
   min-height: 460px;
   margin: auto;
@@ -50,10 +51,24 @@
     .blogger-card__inf {
 
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       flex-wrap: wrap;
       align-items: flex-start;
       margin-top: 35px;
+
+      .blogger-card__inf-item {
+
+        .blogger-card__inf-title {
+          font-weight: 700;
+          font-size: 27px;
+          color: #324e63;
+        }
+
+        .blogger-card__inf-txt {
+          font-weight: 500;
+          margin-top: 0.05rem;
+        }
+      }
     }
 
     .blogger-card__social {
@@ -79,31 +94,37 @@
         flex-shrink: 0;
         transition: all .3s;
 
-        .instagram {
-          background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-          box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
-        }
+      }
 
-        .facebook {
-          color: white;
-          background: #405de6;
-          box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
-        }
+      .instagram {
+        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+      }
 
-        .twitch {
-          background: linear-gradient(45deg, #b34ed5, #e452f0);
-          box-shadow: 0px 4px 30px rgba(123, 79, 223, 0.6);
-        }
+      .facebook {
+        color: white;
+        background: #405de6;
+        box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+      }
 
-        .youtube {
-          background: linear-gradient(45deg, #d5135a, #f05924);
-          box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
-        }
+      .twitch {
+        background: linear-gradient(45deg, #9147ff, #662fad);
+        box-shadow: 0px 4px 30px rgba(123, 79, 223, 0.6);
+      }
 
-        .vk {
-          background: #405de6;
-          box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
-        }
+      .youtube {
+        background: linear-gradient(45deg, #d5135a, #f05924);
+        box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
+      }
+
+      .vk {
+        background: #4a76a8;
+        box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+      }
+
+      .twitter {
+        background: #1da1f2;
+        box-shadow: 0px 7px 30px rgba(29, 161, 242, 0.5);
       }
     }
   }
