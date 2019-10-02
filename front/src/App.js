@@ -1,9 +1,9 @@
 import './App.less';
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import TopNavBar from "./navbars/TopNavBar/TopNavBar";
-import LeftNavBar from "./navbars/LeftNavBar/LeftNavBar";
-import BottomNavBar from "./navbars/BottomNavBar/BottomNavBar";
+import TopNavBar from "./components/navbars/TopNavBar/TopNavBar";
+import LeftNavBar from "./components/navbars/routeNavBars/LeftNavBar/LeftNavBar";
+import BottomNavBar from "./components/navbars/routeNavBars/BottomNavBar/BottomNavBar";
 import {Container} from 'react-bootstrap';
 import Main from "./layouts/Main/Main";
 import connect from "react-redux/es/connect/connect";

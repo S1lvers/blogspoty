@@ -1,4 +1,4 @@
-import './LeftNavBarBlock.less';
+import './LeftNavBar.less';
 import React, {Component} from 'react';
 
 export class LeftNavBarBlock extends Component {

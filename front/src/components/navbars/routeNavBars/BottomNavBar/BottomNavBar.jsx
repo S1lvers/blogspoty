@@ -1,7 +1,7 @@
 import './BottomNavBar.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
-import NavButton from "../NavButton/NavButton";
+import NavButton from "../navButton/NavButton";
 import {faBars, faCoffee} from '@fortawesome/free-solid-svg-icons'
 
 class BottomNavBar extends Component {

@@ -1,8 +1,8 @@
 import './LeftNavBar.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
-import {LeftNavBarBlock as Block} from "./LeftNavBarBlock/LeftNavBarBlock";
-import NavButton from "../NavButton/NavButton";
+import {LeftNavBarBlock as Block} from "./LeftNavBarBlock";
+import NavButton from "../navButton/NavButton";
 import {faBars, faCoffee} from '@fortawesome/free-solid-svg-icons'
 
 class LeftNavBar extends Component {

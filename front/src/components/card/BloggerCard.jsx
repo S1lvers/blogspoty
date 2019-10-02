@@ -2,8 +2,7 @@ import './BloggerCard.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import PropTypes from 'prop-types';
-import { faFacebook, faFacebookF, faInstagram, faVk, faYoutube, faTwitch, faTwitter } from "@fortawesome/free-brands-svg-icons"
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import BloggerCardSocial from "./BloggerCardSocial";
 
 class BloggerCard extends Component {
     render() {
@@ -26,40 +25,15 @@ class BloggerCard extends Component {
                             <div className="blogger-card__inf-txt">Followers</div>
                         </div>
                         <div className="blogger-card__inf-item">
-                            <div className="blogger-card__inf-title">1598</div>
-                            <div className="blogger-card__inf-txt">Followers</div>
+                            <div className="blogger-card__inf-title">41</div>
+                            <div className="blogger-card__inf-txt">Subscribtions</div>
                         </div>
                         <div className="blogger-card__inf-item">
-                            <div className="blogger-card__inf-title">1598</div>
-                            <div className="blogger-card__inf-txt">Followers</div>
+                            <div className="blogger-card__inf-title">169</div>
+                            <div className="blogger-card__inf-txt">Publications</div>
                         </div>
                     </div>
-                    <div className={"blogger-card__social"}>
-                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item facebook"}>
-                            <FontAwesomeIcon icon={faFacebookF}/>
-                        </a>
-
-                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item instagram"}>
-                            <FontAwesomeIcon icon={faInstagram}/>
-                        </a>
-
-                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item vk"}>
-                            <FontAwesomeIcon icon={faVk}/>
-                        </a>
-
-                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item youtube"}>
-                            <FontAwesomeIcon icon={faYoutube}/>
-                        </a>
-
-                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item twitch"}>
-                            <FontAwesomeIcon icon={faTwitch}/>
-                        </a>
-
-                        <a href={"http://www.facebook.com"} className={"blogger-card-social__item twitter"}>
-                            <FontAwesomeIcon icon={faTwitter}/>
-                        </a>
-
-                    </div>
+                    <BloggerCardSocial facebook={"facebook"} instagram={"instagramm"}/>
                 </div>
             </div>
         )
