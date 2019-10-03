@@ -2,7 +2,7 @@ import './BloggerCard.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import PropTypes from 'prop-types';
-import BloggerCardSocial from "./BloggerCardSocial";
+import BloggerCardSocial from "./bloggerCardSocial";
 
 class BloggerCard extends Component {
     render() {

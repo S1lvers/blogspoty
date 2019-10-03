@@ -2,10 +2,11 @@ import './TopNavBar.less';
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import {NavLink} from "react-router-dom";
-import {ACTION_COLLAPSED_NAVBAR} from '../../../redux/reducers/applicationState'
-import SearchInput from './SearchInput'
+import {ACTION_COLLAPSED_NAVBAR, ACTION_CHANGE_TOP_NAV_BAR} from '../../../redux/reducers/applicationState'
+import MonitorSearchInput from './searchInput/MonitorSearchInput'
+import CollapsedSearchInput from './searchInput/CollapsedSearchInput'
 
 class TopNavBar extends Component {
 
@@ -16,7 +17,21 @@ class TopNavBar extends Component {
         })
     };
 
+    showDefaultNavBar = () => {
+        this.props.dispatch({
+            type: ACTION_CHANGE_TOP_NAV_BAR,
+            searchNavBar: false
+        })
+    };
+
+
     render() {
+        return (
+            this.props.applicationState.searchNavBar ? this.renderSearchNavBar() : this.renderDefaultNavBar()
+        )
+    }
+
+    renderDefaultNavBar = () => {
         return (
             <div className={"top-nav-bar"}>
                 <div className={"left-nav"}>
@@ -27,18 +42,29 @@ class TopNavBar extends Component {
                         <span>BLOGFUSION</span>
                     </NavLink>
                 </div>
-                <SearchInput/>
-                <div className={"right-nav"}>
-
+                <div className={"center-nav"}>
+                    <MonitorSearchInput/>
                 </div>
+                <div className={"right-nav"}>
+                    <CollapsedSearchInput/>
+                </div>
+            </div>
+        )
+    }
+
+    renderSearchNavBar = () => {
+        return (
+            <div className={"search-nav-bar"} onBlur={this.showDefaultNavBar}>
+                <div className={"back-icon"} onClick={this.showDefaultNavBar}>
+                    <FontAwesomeIcon icon={faArrowLeft}/>
+                </div>
+                <MonitorSearchInput/>
             </div>
         )
     }
 }
 
-TopNavBar.propTypes = {
-
-};
+TopNavBar.propTypes = {};
 
 function mapStateToProps(store) {
     return {
