@@ -1,7 +1,7 @@
 import './BloggerCard.less';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {faFacebookF, faInstagram, faTwitch, faTwitter, faVk, faYoutube} from "@fortawesome/free-brands-svg-icons"
+import {faFacebookF, faInstagram, faTwitch, faTwitter, faVk, faYoutube, faTelegramPlane} from "@fortawesome/free-brands-svg-icons"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 class BloggerCardSocial extends Component {
@@ -14,6 +14,7 @@ class BloggerCardSocial extends Component {
                 {getSocial(this.props.youtube, "youtube")}
                 {getSocial(this.props.twitch, "twitch")}
                 {getSocial(this.props.twitter, "twitter")}
+                {getSocial(this.props.telegramm, "telegramm")}
 
             </div>
         )
@@ -35,6 +36,7 @@ const getFaIcon = (social) => {
         case "youtube": return faYoutube;
         case "twitch": return faTwitch;
         case "twitter": return faTwitter;
+        case "telegramm": return faTelegramPlane;
     }
 };
 
@@ -45,6 +47,7 @@ BloggerCardSocial.propTypes = {
     twitter: PropTypes.string,
     youtube: PropTypes.string,
     vk: PropTypes.string,
+    telegramm: PropTypes.string,
 };
 
 

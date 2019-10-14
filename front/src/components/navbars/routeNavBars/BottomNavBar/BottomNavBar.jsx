@@ -12,10 +12,10 @@ class BottomNavBar extends Component {
                     <NavButton title={"Главная"} alt={"Главная"} linkTo={"/"} icon={faCoffee}/>
                 </div>
                 <div className={"col-sm-4 pl-0 pr-0"}>
-                    <NavButton title={"Популярное"} alt={"Популярное"} linkTo={"/popular"} icon={faBars}/>
+                    <NavButton title={"Популярные"} alt={"Популярные"} linkTo={"/popular"} icon={faBars}/>
                 </div>
                 <div className={"col-sm-4 pl-0 pr-0"}>
-                    <NavButton title={"Восходящие"} alt={"Набирающие популярность"} linkTo={"/rising"}
+                    <NavButton title={"Случайные"} alt={"Набирающие популярность"} linkTo={"/random"}
                                icon={faCoffee}/>
                 </div>
             </div>

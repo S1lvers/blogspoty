@@ -19,7 +19,7 @@ class MonitorSearchInput extends Component {
             <InputGroup className="search-input-monitor">
                 <FormControl
                     ref={(input) => this.searchInput = input}
-                    placeholder="Введите имя или тэг блогера"
+                    placeholder="Введите запрос"
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                     className={"search-form-control"}

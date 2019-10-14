@@ -13,8 +13,8 @@ class LeftNavBar extends Component {
             <div className={navBarClassName}>
                 <Block>
                     <NavButton title={"Главная"} alt={"Главная"} linkTo={"/"} icon={faCoffee}/>
-                    <NavButton title={"Набирающие популярность"} alt={"Набирающие популярность"} linkTo={"/rising"} icon={faCoffee}/>
-                    <NavButton title={"Популярное"} alt={"Популярное"} linkTo={"/popular"} icon={faBars}/>
+                    <NavButton title={"Популярные"} alt={"Популярные"} linkTo={"/popular"} icon={faCoffee}/>
+                    <NavButton title={"Случайные"} alt={"Случайные"} linkTo={"/random"} icon={faBars}/>
                 </Block>
             </div>
         )

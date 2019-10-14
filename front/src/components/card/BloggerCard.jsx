@@ -19,21 +19,22 @@ class BloggerCard extends Component {
                     <div className={"blogger-card__tags"}>
                         #lifeblogger #trashblog #santabarbarablog
                     </div>
-                    <div className={"blogger-card__inf container"}>
-                        <div className="blogger-card__inf-item">
-                            <div className="blogger-card__inf-title">1598</div>
-                            <div className="blogger-card__inf-txt">Followers</div>
-                        </div>
-                        <div className="blogger-card__inf-item">
-                            <div className="blogger-card__inf-title">41</div>
-                            <div className="blogger-card__inf-txt">Subscribtions</div>
-                        </div>
-                        <div className="blogger-card__inf-item">
-                            <div className="blogger-card__inf-title">169</div>
-                            <div className="blogger-card__inf-txt">Publications</div>
-                        </div>
-                    </div>
-                    <BloggerCardSocial facebook={"facebook"} instagram={"instagramm"}/>
+                    {/*пока непонятно нужно ли это вообще*/}
+                    {/*<div className={"blogger-card__inf container"}>*/}
+                        {/*<div className="blogger-card__inf-item">*/}
+                            {/*<div className="blogger-card__inf-title">1598</div>*/}
+                            {/*<div className="blogger-card__inf-txt">Followers</div>*/}
+                        {/*</div>*/}
+                        {/*<div className="blogger-card__inf-item">*/}
+                            {/*<div className="blogger-card__inf-title">41</div>*/}
+                            {/*<div className="blogger-card__inf-txt">Subscribtions</div>*/}
+                        {/*</div>*/}
+                        {/*<div className="blogger-card__inf-item">*/}
+                            {/*<div className="blogger-card__inf-title">169</div>*/}
+                            {/*<div className="blogger-card__inf-txt">Publications</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                    <BloggerCardSocial facebook={"facebook"} instagram={"instagramm"} telegramm={"telegramm"}/>
                 </div>
             </div>
         )

@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 import {ACTION_COLLAPSED_NAVBAR, ACTION_CHANGE_TOP_NAV_BAR} from '../../../redux/reducers/applicationState'
 import MonitorSearchInput from './searchInput/MonitorSearchInput'
 import CollapsedSearchInput from './searchInput/CollapsedSearchInput'
-
+import ProfileControl from './profile/ProfileControl'
 class TopNavBar extends Component {
 
     collapseNavBar = () => {
@@ -39,7 +39,7 @@ class TopNavBar extends Component {
                         <FontAwesomeIcon icon={faBars}/>
                     </div>
                     <NavLink className={"logo"} exact to={"/"} title={"Главная страница BlogHole"}>
-                        <span>BLOGFUSION</span>
+                        <span>Visit</span>
                     </NavLink>
                 </div>
                 <div className={"center-nav"}>
@@ -47,6 +47,7 @@ class TopNavBar extends Component {
                 </div>
                 <div className={"right-nav"}>
                     <CollapsedSearchInput/>
+                    <ProfileControl/>
                 </div>
             </div>
         )

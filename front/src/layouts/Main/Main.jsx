@@ -7,20 +7,17 @@ class Main extends Component {
     render() {
         return (
             <div className={"content main d-flex flex-column"}>
-                <BloggerCard name={"Никита Мальков"}/>
+                <BloggerCard name={"David Guetta"}/>
+                <BloggerCard name={"David Guetta"}/>
             </div>
         )
     }
 }
 
-Main.propTypes = {
-
-};
+Main.propTypes = {};
 
 function mapStateToProps(store) {
-    return {
-
-    };
+    return {};
 }
 
 export default (connect(mapStateToProps)(Main));
