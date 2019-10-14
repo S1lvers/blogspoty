@@ -7,8 +7,22 @@ class Main extends Component {
     render() {
         return (
             <div className={"content main d-flex flex-column"}>
-                <BloggerCard name={"David Guetta"}/>
-                <BloggerCard name={"David Guetta"}/>
+                <div className={"row"}>
+                    <div className={"col"}>
+                        <BloggerCard name={"David Guetta"}/>
+                    </div>
+                    <div className={"col"}>
+                        <BloggerCard name={"David Guetta"}/>
+                    </div>
+                </div>
+                <div className={"row"}>
+                    <div className={"col"}>
+                        <BloggerCard name={"David Guetta"}/>
+                    </div>
+                    <div className={"col"}>
+                        <BloggerCard name={"David Guetta"}/>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -34,7 +34,7 @@ class BloggerCard extends Component {
                             {/*<div className="blogger-card__inf-txt">Publications</div>*/}
                         {/*</div>*/}
                     {/*</div>*/}
-                    <BloggerCardSocial facebook={"facebook"} instagram={"instagramm"} telegramm={"telegramm"}/>
+                    <BloggerCardSocial facebook={"facebook"} instagram={"instagramm"} telegramm={"telegramm"} vk={"vk"} twitter={"twitter"} youtube={"yt"}/>
                 </div>
             </div>
         )
