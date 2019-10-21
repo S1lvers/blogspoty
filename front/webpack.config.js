@@ -19,7 +19,7 @@ module.exports = {
                 use: ['style-loader','css-loader',"less-loader"]
             },
             {
-                test: /\.(png|jpg|gif|woff|woff2|)$/,
+                test: /\.(png|jpg|gif|woff|woff2|svg|)$/,
                 use: [
                     {
                         loader: 'url-loader',

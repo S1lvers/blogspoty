@@ -1,0 +1,109 @@
+.login {
+  width: 519px !important;
+  padding: 20px 60px 26px;
+
+  .login-title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .login-title__header {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: center;
+      font-size: 2rem;
+
+    }
+
+    .login-title__info {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      span {
+        text-align: center;
+      }
+
+      a {
+        text-align: center;
+      }
+    }
+  }
+
+  .login-form {
+
+    .login-form__under {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      a {
+        color: #606060;
+
+        &:hover {
+          text-decoration: none;
+          color: #303030;
+        }
+      }
+    }
+
+    .button {
+      font-size: 1.25rem;
+    }
+  }
+
+  .line-break {
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+
+    &:before {
+      display: block;
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      height: 1px;
+      content: "";
+      background-color: #393939;
+      margin-right: 6px;
+    }
+
+    &:after {
+      margin-left: 6px;
+      display: block;
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      height: 1px;
+      content: "";
+      background-color: #393939;
+    }
+  }
+
+  .social-buttons {
+    .vk-button {
+      background-color: #3e5294
+    }
+
+    .google-button {
+      margin-top: 0.75rem;
+      color: #595959;
+      background-color: #FFFFFF;
+      border-color: #FFFFFF;
+
+      svg {
+
+      }
+    }
+
+    .button-icon {
+      float: left;
+    }
+  }
+}
+
