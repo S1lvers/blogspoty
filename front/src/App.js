@@ -7,6 +7,7 @@ import BottomNavBar from "./components/navbars/routeNavBars/BottomNavBar/BottomN
 import {Container} from 'react-bootstrap';
 import Main from "./layouts/Main/Main";
 import connect from "react-redux/es/connect/connect";
+import Login from "./layouts/Authorization/Login/Login";
 
 class App extends Component {
     render() {
@@ -21,6 +22,7 @@ class App extends Component {
                                 <Route exact path="/" component={Main}/>
                                 <Route exact path="/rising" component={Main}/>
                                 <Route exact path="/popular" component={Main}/>
+                                <Route exact path="/login" component={Login}/>
                             </Container>
                         </div>
                         <BottomNavBar/>
