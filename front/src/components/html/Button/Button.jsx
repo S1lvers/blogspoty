@@ -13,7 +13,7 @@ class Button extends Component {
     render() {
         const className = this.props.className ? this.props.className + " button" : "button";
         return (
-            <BootstrapButton className={className} variant="primary" block>
+            <BootstrapButton onClick={this.props.onClick} className={className} variant="primary" block>
                 {this.props.children}
             </BootstrapButton>
         )

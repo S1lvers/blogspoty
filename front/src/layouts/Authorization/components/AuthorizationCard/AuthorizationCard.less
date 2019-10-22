@@ -20,6 +20,31 @@
 .authorization-card {
   width: 519px !important;
   background-color: #FFFFFF;
+
+  .warning-message {
+    position: relative;
+    display: block;
+    padding: 12px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 18px;
+    color: #000;
+    text-align: center;
+    background: #fae9a3;
+    border-radius: 4px;
+
+    &:after {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      content: "";
+      border: 6px solid transparent;
+      border-top-color: #fae9a3;
+    }
+  }
 }
 
 .line-break {

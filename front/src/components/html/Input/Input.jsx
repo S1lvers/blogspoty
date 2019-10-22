@@ -16,10 +16,20 @@ class Input extends Component {
         return (
             <Form.Group controlId={"formBasic" + this.props.id}>
                 <Form.Label>{this.props.label}</Form.Label>
-                <Form.Control id={this.props.id} onChange={this.props.onChange} type={this.props.type} placeholder={this.props.placeholder} />
+                <Form.Control value={this.props.value}
+                              isValid={this.props.isValid}
+                              isInvalid={this.props.error}
+                              id={this.props.id}
+                              onChange={this.props.onChange}
+                              type={this.props.type}
+                              placeholder={this.props.placeholder} />
+
                 <Form.Text className="text-muted">
                     {this.props.underText}
                 </Form.Text>
+                <Form.Control.Feedback type="invalid">
+                    {this.props.error}
+                </Form.Control.Feedback>
             </Form.Group>
         )
     }
@@ -31,6 +41,9 @@ Input.propTypes = {
     id: PropTypes.string.required,
     type: PropTypes.string.required,
     onChange: PropTypes.func.required,
+    value: PropTypes.string,
+    isValid: PropTypes.bool,
+    error: PropTypes.string,
     underText: PropTypes.string,
     row: PropTypes.bool,
 };
