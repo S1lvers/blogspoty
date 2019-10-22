@@ -7,7 +7,8 @@ import Button from '../../../components/html/Button/Button'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFacebookF, faInstagram, faTwitch, faTwitter, faVk, faYoutube, faTelegramPlane, faGoogle} from "@fortawesome/free-brands-svg-icons"
 import {NavLink} from "react-router-dom";
-import GoogleLogo from '../GoogleLogo';
+import GoogleLogo from '../components/GoogleLogo';
+import AuthorizationCard from "../components/AuthorizationCard/AuthorizationCard";
 
 class Login extends Component {
 
@@ -27,8 +28,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div className={"container d-flex justify-content-center"}>
-                <div className={"login"}>
+            <AuthorizationCard>
 
                     <div className={"login-title"}>
                         <div className={"login-title__header"}>Войди</div>
@@ -43,7 +43,7 @@ class Login extends Component {
                         <Input placeholder={"от 6 до 32 букв или цифр"} onChange={this.handleChange} id={"password"}
                                label={"Пароль"} type={"password"}/>
                         <div className={"login-form__under"}>
-                            <Checkbox label={"Запомнить меня"} id={"rememberMe"} onChange={this.handleChange}/>
+                            <Checkbox id={"rememberMe"} onChange={this.handleChange}>Запомнить меня</Checkbox>
                             <NavLink title={"Забыл(-а) пароль?"}>Забыл(-а) пароль?</NavLink>
                         </div>
                         <Button id={"loginBtn"} onClick={this.login} size={"lg"}>ВОЙТИ</Button>
@@ -67,9 +67,7 @@ class Login extends Component {
                             <span>Войди через Google</span>
                         </Button>
                     </div>
-                </div>
-            </div>
-
+            </AuthorizationCard>
         )
     }
 }

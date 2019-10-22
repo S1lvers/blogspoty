@@ -8,7 +8,7 @@ class BloggerCard extends Component {
     render() {
         // TODO убрать хардкод
         return (
-            <div className={"blogger-card mt-5 pt-5"}>
+            <div className={"blogger-card pt-5"}>
                 <div className={"blogger-card__img"}>
                     <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card"/>
                 </div>

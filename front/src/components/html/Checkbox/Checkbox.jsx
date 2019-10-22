@@ -6,23 +6,23 @@ import PropTypes from "prop-types";
 
 class Checkbox extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
 
     }
 
     render() {
         return (
-            <Form.Group as={Row} controlId={"formHorizontal"+this.props.id}>
-                <Col>
-                    <Form.Check label={this.props.label} />
-                </Col>
-            </Form.Group>
+            <Form className={this.props.className ? this.props.className : ""}>
+                <Form.Check type={"checkbox"} id={this.props.id}>
+                    <Form.Check.Input type={"checkbox"}/>
+                    <Form.Check.Label>{this.props.children}</Form.Check.Label>
+                </Form.Check>
+            </Form>
         )
     }
 }
 
 Checkbox.propTypes = {
-    label: PropTypes.string,
     id: PropTypes.string.required,
     onChange: PropTypes.func.required,
 };

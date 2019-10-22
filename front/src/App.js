@@ -8,6 +8,7 @@ import {Container} from 'react-bootstrap';
 import Main from "./layouts/Main/Main";
 import connect from "react-redux/es/connect/connect";
 import Login from "./layouts/Authorization/Login/Login";
+import Signup from "./layouts/Authorization/Signup/Signup";
 
 class App extends Component {
     render() {
@@ -23,6 +24,7 @@ class App extends Component {
                                 <Route exact path="/rising" component={Main}/>
                                 <Route exact path="/popular" component={Main}/>
                                 <Route exact path="/login" component={Login}/>
+                                <Route exact path="/signup" component={Signup}/>
                             </Container>
                         </div>
                         <BottomNavBar/>
