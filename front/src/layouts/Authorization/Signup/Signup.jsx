@@ -12,6 +12,7 @@ import {NavLink} from "react-router-dom";
 import GoogleLogo from '../components/GoogleLogo';
 import AuthorizationCard from "../components/AuthorizationCard/AuthorizationCard";
 import {isEmail, isPassword, emailErrorMessage} from "../auth-utils";
+import axios from 'axios'
 
 let emailTimer;
 let passwordTimer;
@@ -76,6 +77,27 @@ class Signup extends Component {
     };
 
     signup = () => {
+        axios.post("/api/authorization/signup",
+            {
+                email: this.state.email,
+                username: this.state.username,
+                password: this.state.password,
+                checkPassword: this.state.checkPassword
+            }
+        ).then(response => {
+            console.log(response)
+        }).catch(error => {
+            const response = error.response;
+            if (response.status === 400) {
+                const errors = response.data.errors.map(error => error.defaultMessage);
+                this.setState({
+                    signupMessage: errors.join(";\n")
+                })
+            } else {
+                console.log(response)
+            }
+        });
+
         this.setState({
             signupMessage: "Данный email уже зарегестрирован в приложении",
         })
@@ -88,7 +110,7 @@ class Signup extends Component {
                     Зарегестрируйся
                 </div>
 
-                {this.state.signupMessage? <div className={"warning-message"}>
+                {this.state.signupMessage ? <div className={"warning-message"}>
                     {this.state.signupMessage}
                 </div> : null}
 
@@ -99,11 +121,15 @@ class Signup extends Component {
                     <Input placeholder={"Email"} onChange={this.handleEmailChange} id={"email"}
                            label={"Email"} value={this.state.email} error={this.state.emailError}/>
 
-                    <Input placeholder={"от 8 до 32 символов, минимум 1 цифра"} onChange={this.handlePasswordChange} id={"password"}
-                           label={"Надежный пароль"} type={"password"} value={this.state.password} error={this.state.passwordError}/>
+                    <Input placeholder={"от 8 до 32 символов, минимум 1 цифра"} onChange={this.handlePasswordChange}
+                           id={"password"}
+                           label={"Надежный пароль"} type={"password"} value={this.state.password}
+                           error={this.state.passwordError}/>
 
-                    <Input placeholder={"Повторите пароль"} onChange={this.handleCheckPasswordChange} id={"checkPassword"}
-                           label={"Повторите пароль"} value={this.state.checkPassword} type={"password"} error={this.state.checkPasswordError}/>
+                    <Input placeholder={"Повторите пароль"} onChange={this.handleCheckPasswordChange}
+                           id={"checkPassword"}
+                           label={"Повторите пароль"} value={this.state.checkPassword} type={"password"}
+                           error={this.state.checkPasswordError}/>
 
                     <Checkbox className={"politics"} id={"politics"} onChange={this.handleChange}>
                         {"Я ознакомлен и принимаю ваше "}

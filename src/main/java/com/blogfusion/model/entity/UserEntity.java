@@ -1,5 +1,6 @@
 package com.blogfusion.model.entity;
 
+import com.blogfusion.model.enums.AuthorityType;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -10,7 +11,7 @@ import java.util.Set;
 @Data
 @Entity
 @Accessors(chain = true)
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,11 +23,9 @@ public class User {
     @Column(nullable = false)
     private String username;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "authority_id") })
-    private Set<Authority> authorities = new HashSet<>();
+    @ElementCollection(targetClass = AuthorityType.class)
+    @Enumerated(EnumType.STRING)
+    private Set<AuthorityType> authorities = new HashSet<>();
 
     //BCrypt pswd
     private String password;

@@ -1,6 +1,6 @@
 package com.blogfusion.authorization;
 
-import com.blogfusion.model.entity.User;
+import com.blogfusion.model.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,46 +14,46 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
-    private User user;
+    private UserEntity userEntity;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getAuthorities().stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getName().toString()))
+        return userEntity.getAuthorities().stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.toString()))
                 .collect(Collectors.toList());
     }
 
     public long getId() {
-        return user.getId();
+        return userEntity.getId();
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return userEntity.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return userEntity.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return user.getAccountNonExpired();
+        return userEntity.getAccountNonExpired();
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return user.getAccountNonLocked();
+        return userEntity.getAccountNonLocked();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return user.getCredentialsNonExpired();
+        return userEntity.getCredentialsNonExpired();
     }
 
     @Override
     public boolean isEnabled() {
-        return user.getEnabled();
+        return userEntity.getEnabled();
     }
 }

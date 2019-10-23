@@ -32,7 +32,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    private static String[] permitedApi = {"/api/login",""};
+    private static String[] permitedApi = {"/api/login"};
     private static String[] userRoleApi = {"/api/logout", "/api/user**"};
-    private static String[] adminRoleApi = {};
+    private static String[] adminRoleApi = {"/api/admin"};
 }

@@ -1,6 +1,6 @@
 package com.blogfusion.authorization;
 
-import com.blogfusion.model.entity.User;
+import com.blogfusion.model.entity.UserEntity;
 import com.blogfusion.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,8 +21,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userService.getUserByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email %s not found", email)));
+        UserEntity userEntity = userService.getUserByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("UserEntity with email %s not found", email)));
         return null;
     }
 }
