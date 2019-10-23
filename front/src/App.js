@@ -38,6 +38,8 @@ class App extends Component {
     }
 }
 
+
+
 function mapStateToProps(store) {
     return {
         applicationState: store.applicationState
