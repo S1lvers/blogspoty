@@ -16,6 +16,7 @@ public class SignupRequest {
     @NotEmpty(message = "Поле \"Email\" не заполнено")
     private String email;
 
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]{3,}$", message = "Имя пользователя должно быть заполнено более чем 3 символами и состоять только из букв и/или цифр")
     @NotEmpty(message = "Поле \"Как к вам обращаться\" не заполнено")
     private String username;
 

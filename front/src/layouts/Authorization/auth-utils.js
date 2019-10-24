@@ -8,4 +8,9 @@ export const isPassword = (password) => {
     return re.test(String(password).toLowerCase());
 }
 
+export const isUsername = (username) => {
+    var re = /^[a-zA-Z0-9_.-]{3,}$/
+    return re.test(String(username).toLowerCase());
+}
+
 export const emailErrorMessage = "Неверный адрес электронной почты. Проверь правильность ввода и попробуй снова";

@@ -25,13 +25,13 @@ public class AuthorizationController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request, HttpSession session) {
-        return new ResponseEntity<LoginResponse>(new LoginResponse(), HttpStatus.OK);
+        return new ResponseEntity<>(new LoginResponse(), HttpStatus.OK);
     }
 
     @PostMapping("/signup")
     public ResponseEntity<SignupResponse> signup(@Valid @RequestBody SignupRequest request) {
         SignupResponse signupResponse = authorizationService.signup(request);
-        return new ResponseEntity<SignupResponse>(signupResponse, signupResponse.getHttpStatus());
+        return new ResponseEntity<>(signupResponse, signupResponse.getHttpStatus());
     }
 
 }

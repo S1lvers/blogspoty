@@ -11,14 +11,16 @@ import {
 import {NavLink} from "react-router-dom";
 import GoogleLogo from '../components/GoogleLogo';
 import AuthorizationCard from "../components/AuthorizationCard/AuthorizationCard";
-import {isEmail, isPassword, emailErrorMessage} from "../auth-utils";
+import {isEmail, isPassword, emailErrorMessage, isUsername} from "../auth-utils";
 import axios from 'axios'
 
 let emailTimer;
 let passwordTimer;
+let usernameTimer;
 
 const passwordErrorMessage = "Пароль должен состоять из 8-32 знаков, содержать минимум 1 цифру и букву, без пробелов и следующих символов: <, >, ‘, “";
 const passwordErrorCheckMessage = "Указанные пароли не совпадают";
+const usernameErrorMessage = "Поле должно быть заполнено более чем 3 символами и состоять только из букв и/или цифр";
 
 class Signup extends Component {
 
@@ -28,6 +30,8 @@ class Signup extends Component {
         this.state = {
             email: undefined,
             emailError: undefined,
+            username: undefined,
+            usernameError: undefined,
             password: undefined,
             passwordError: undefined,
             checkPassword: undefined,
@@ -35,6 +39,13 @@ class Signup extends Component {
             signupMessage: undefined,
         }
     }
+
+    handleUsernameChange = event => {
+        const username = event.target.value;
+        this.setState({username});
+        clearTimeout(usernameTimer);
+        usernameTimer = this.updateError(username, isUsername, usernameErrorMessage, "usernameError")
+    };
 
     handleEmailChange = event => {
         const email = event.target.value;
@@ -115,8 +126,9 @@ class Signup extends Component {
                 </div> : null}
 
                 <div className={"signup-form"}>
-                    <Input placeholder={"Имя или Никнейм"} onChange={this.handleChange} id={"nickname"}
-                           label={"Как к Вам обращаться"}/>
+                    <Input placeholder={"Имя или Никнейм"} value={this.state.username}
+                           onChange={this.handleUsernameChange} id={"username"}
+                           label={"Как к Вам обращаться"} error={this.state.usernameError}/>
 
                     <Input placeholder={"Email"} onChange={this.handleEmailChange} id={"email"}
                            label={"Email"} value={this.state.email} error={this.state.emailError}/>
