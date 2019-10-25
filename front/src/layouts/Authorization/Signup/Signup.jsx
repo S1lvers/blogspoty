@@ -108,10 +108,6 @@ class Signup extends Component {
                 console.log(response)
             }
         });
-
-        this.setState({
-            signupMessage: "Данный email уже зарегестрирован в приложении",
-        })
     }
 
     render() {

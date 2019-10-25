@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,5 +37,8 @@ public class UserEntity {
 
     private Boolean credentialsNonExpired = true;
 
-    private Boolean enabled = true;
+    private Boolean enabled = false;
+
+    @Column
+    private LocalDateTime createdAt;
 }
