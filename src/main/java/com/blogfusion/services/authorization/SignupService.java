@@ -1,4 +1,4 @@
-package com.blogfusion.authorization;
+package com.blogfusion.services.authorization;
 
 import com.blogfusion.exception.SignupException;
 import com.blogfusion.model.request.SignupRequest;
@@ -29,7 +29,8 @@ class SignupService {
             return new SignupResponse(errorMessages, HttpStatus.BAD_REQUEST);
         }
         userService.createUser(signupRequest);
-        return new SignupResponse(HttpStatus.OK);
+        sendEmailConfirmation("123");
+        return new SignupResponse(HttpStatus.OK).setRegistredEmail(signupRequest.getEmail());
     }
 
     public void sendEmailConfirmation(String email) {

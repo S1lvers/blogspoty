@@ -7,11 +7,18 @@ import lombok.Data;
 import java.util.Arrays;
 
 @Data
-public class ResponsiveException extends RuntimeException {
+abstract class ResponsiveException extends RuntimeException {
 
     private Response response;
 
     public ResponsiveException(Response response) {
-        super(Arrays.stream(response.getErrors()).findFirst().orElse(new ErrorMessage("Неизвестная ошибка","")).getDefaultMessage());
+        super(
+                Arrays.stream(response.getErrors())
+                        .findFirst()
+                        .orElse(new ErrorMessage("Неизвестная ошибка",""))
+                        .getDefaultMessage()
+        );
+
+        this.response = response;
     }
 }

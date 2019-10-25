@@ -14,7 +14,7 @@ class Checkbox extends Component {
         return (
             <Form className={this.props.className ? this.props.className : ""}>
                 <Form.Check type={"checkbox"} id={this.props.id}>
-                    <Form.Check.Input type={"checkbox"}/>
+                    <Form.Check.Input type={"checkbox"} onChange={this.props.onChange} value={this.props.value}/>
                     <Form.Check.Label>{this.props.children}</Form.Check.Label>
                 </Form.Check>
             </Form>
@@ -25,6 +25,7 @@ class Checkbox extends Component {
 Checkbox.propTypes = {
     id: PropTypes.string.required,
     onChange: PropTypes.func.required,
+    value: PropTypes.bool
 };
 
 function mapStateToProps(store) {

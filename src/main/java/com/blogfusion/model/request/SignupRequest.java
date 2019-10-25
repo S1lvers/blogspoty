@@ -2,7 +2,9 @@ package com.blogfusion.model.request;
 
 import lombok.Data;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
@@ -24,4 +26,8 @@ public class SignupRequest {
     private String password;
 
     private String checkPassword;
+
+    @NotNull(message = "Пользовательское соглашение и Политика конфиденциальности должны быть приняты")
+    @AssertTrue(message = "Пользовательское соглашение и Политика конфиденциальности должны быть приняты")
+    private Boolean confirmation;
 }

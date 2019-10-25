@@ -13,6 +13,7 @@ import GoogleLogo from '../components/GoogleLogo';
 import AuthorizationCard from "../components/AuthorizationCard/AuthorizationCard";
 import {isEmail, isPassword, emailErrorMessage, isUsername} from "../auth-utils";
 import axios from 'axios'
+import {getBadRequestErrors} from "../../../util/error-utils";
 
 let emailTimer;
 let passwordTimer;
@@ -36,6 +37,7 @@ class Signup extends Component {
             passwordError: undefined,
             checkPassword: undefined,
             checkPasswordError: undefined,
+            confirmation: false,
             signupMessage: undefined,
         }
     }
@@ -67,6 +69,11 @@ class Signup extends Component {
         this.setState({checkPassword}, () => this.checkPasswords(this.state.password, this.state.checkPassword))
     };
 
+    handleConfirmChange = event => {
+        const confirmation = event.target.checked
+        this.setState({confirmation})
+    }
+
     checkPasswords = (password, checkPassword) => {
         if (checkPassword === "" || !checkPassword) {
             this.setState({checkPasswordError: undefined});
@@ -74,6 +81,15 @@ class Signup extends Component {
         }
         this.setState({checkPasswordError: password !== checkPassword ? passwordErrorCheckMessage : undefined})
     };
+
+    //TODO если поставить console log то вызывается дважды этот метод, возможно изза смены field и fieldError
+    isSignUpBtnDisabled = () => {
+        if (!this.state.username && !this.state.usernameError || this.state.usernameError) return true;
+        if (!this.state.email && !this.state.emailError || this.state.emailError) return true;
+        if (!this.state.password && !this.state.passwordError || this.state.passwordError) return true;
+        if (!this.state.checkPassword && !this.state.checkPasswordError || this.state.checkPasswordError) return true;
+        return !this.state.confirmation;
+    }
 
     updateError = (field, checker, message, errorField) => {
         return setTimeout(
@@ -93,16 +109,17 @@ class Signup extends Component {
                 email: this.state.email,
                 username: this.state.username,
                 password: this.state.password,
-                checkPassword: this.state.checkPassword
+                checkPassword: this.state.checkPassword,
+                confirmation: this.state.confirmation
             }
         ).then(response => {
-            console.log(response)
+            const data = {response};
+
         }).catch(error => {
             const response = error.response;
             if (response.status === 400) {
-                const errors = response.data.errors.map(error => error.defaultMessage);
                 this.setState({
-                    signupMessage: errors.join(";\n")
+                    signupMessage: getBadRequestErrors(error)
                 })
             } else {
                 console.log(response)
@@ -139,14 +156,14 @@ class Signup extends Component {
                            label={"Повторите пароль"} value={this.state.checkPassword} type={"password"}
                            error={this.state.checkPasswordError}/>
 
-                    <Checkbox className={"politics"} id={"politics"} onChange={this.handleChange}>
+                    <Checkbox className={"politics"} id={"politics"} value={this.state.confirmation} onChange={this.handleConfirmChange}>
                         {"Я ознакомлен и принимаю ваше "}
                         <NavLink exact to={"/"} title={"Пользовательско соглашение"}>
                             <span>Пользовательское соглашение и Политику конфиденциальности</span>
                         </NavLink>
                     </Checkbox>
 
-                    <Button id={"loginBtn"} onClick={this.signup} size={"lg"}>ЗАРЕГЕСТРИРОВАТЬСЯ</Button>
+                    <Button disabled={this.isSignUpBtnDisabled()} id={"loginBtn"} onClick={this.signup} size={"lg"}>ЗАРЕГЕСТРИРОВАТЬСЯ</Button>
                 </div>
 
                 <div className={"centered-text"}>

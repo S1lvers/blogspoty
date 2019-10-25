@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 @Accessors(chain = true)
 public class SignupResponse extends Response {
 
+    private String registredEmail;
+
     public SignupResponse(ErrorMessage[] errors, HttpStatus httpStatus) {
         super(errors, httpStatus);
     }

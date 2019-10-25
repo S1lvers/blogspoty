@@ -1,6 +1,6 @@
 package com.blogfusion.controllers;
 
-import com.blogfusion.authorization.AuthorizationService;
+import com.blogfusion.services.authorization.AuthorizationService;
 import com.blogfusion.model.request.LoginRequest;
 import com.blogfusion.model.request.SignupRequest;
 import com.blogfusion.model.response.LoginResponse;
