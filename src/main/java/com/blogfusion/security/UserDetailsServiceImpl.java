@@ -1,4 +1,4 @@
-package com.blogfusion.authorization;
+package com.blogfusion.security;
 
 import com.blogfusion.model.entity.UserEntity;
 import com.blogfusion.services.UserService;

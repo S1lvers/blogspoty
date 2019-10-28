@@ -34,4 +34,11 @@ public class AuthorizationController {
         return new ResponseEntity<>(signupResponse, signupResponse.getHttpStatus());
     }
 
+    //TODO
+    @PostMapping("/confirm")
+    public ResponseEntity confirm(@RequestBody String email) {
+        authorizationService.sendEmailConfirmation(email);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

@@ -16,4 +16,8 @@ public class AuthorizationService {
     public SignupResponse signup(SignupRequest request) {
         return signupService.signup(request);
     }
+
+    public void sendEmailConfirmation(String email) {
+        signupService.sendEmailConfirmation(email);
+    }
 }

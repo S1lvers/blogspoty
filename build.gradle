@@ -46,6 +46,7 @@ dependencies {
     compile 'org.projectlombok:lombok:1.18.6'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'javax.mail:mail:1.4.7'
 }
 
 bootRun {
