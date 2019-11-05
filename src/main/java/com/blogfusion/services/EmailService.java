@@ -1,66 +1,64 @@
 package com.blogfusion.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class EmailService {
 
+    @Value("${spring.mail.username}")
+    private String from;
 
-    @Value("${app.mail.email}")
-    private String defaultFromEmail;
-    @Value("${app.mail.password}")
-    private String defaultPassword;
-    @Value("${app.mail.host}")
-    private String defaultHost;
+    @Value("${app.domain}")
+    private String appDomain;
 
-    @Value("${app.mail.port}")
-    private String defaultPort;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
-    public void sendConfirmationEmail(String toEmail) {
-        // Get system properties
-        Properties properties = System.getProperties();
-        // Setup mail server
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", defaultHost);
-        properties.put("mail.smtp.user", defaultFromEmail);
-        properties.put("mail.smtp.password", defaultPassword);
-        properties.put("mail.smtp.port", defaultPort);
-        properties.put("mail.smtp.auth", "true");
-
-        // Get the default Session object.
-        Session session = Session.getDefaultInstance(properties);
-
-        try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(defaultFromEmail));
-
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress(toEmail));
-
-            // Set Subject: header field
-            message.setSubject("Confirmation!");
-
-            // Now set the actual message
-            message.setText("This is actual message");
-
-            // Send message
-            Transport transport = session.getTransport("smtp");
-            transport.connect(defaultHost, defaultFromEmail, defaultPassword);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
+    public void sendEmail() {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo("tosha993@mail.ru");
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World, Spring Boot Email");
+        javaMailSender.send(msg);
     }
+
+    //todo пробегать по массиву байт, заменять там последовательности, вместо стринги
+    public void sendConfirmationEmail(String to, String confirmationHash) throws MessagingException, IOException {
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("./templates/email/confirmation.html");
+        String fileString = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        String confirmationUrl = appDomain + "/confirmation/" + confirmationHash;
+        fileString = fileString.replaceAll("confirmation_link_replace", confirmationUrl);
+
+        MimeMessage msg = javaMailSender.createMimeMessage();
+
+        // true = multipart message
+        MimeMessageHelper helper = new MimeMessageHelper(msg, true);
+
+        helper.setFrom(from);
+        helper.setTo(to);
+
+        helper.setSubject("Testing from Spring Boot");
+
+        // default = text/plain
+        //helper.setText("Check attachment for image!");
+
+        // true = text/html
+        helper.setText(fileString, true);
+
+        javaMailSender.send(msg);
+
+    }
+
 }

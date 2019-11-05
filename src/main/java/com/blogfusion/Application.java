@@ -1,13 +1,21 @@
 package com.blogfusion;
 
+import com.blogfusion.services.EmailService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
+
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.blogfusion"})
 public class Application implements CommandLineRunner {
+
+    @Autowired
+    private EmailService emailService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -16,6 +24,14 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) {
         this.onStartup();
+        try {
+            emailService.sendConfirmationEmail("tosha993@mail.ru", "fQWnifPQ2rt12FGqw");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("============EMAIL SENDED============");
     }
 
     void onStartup() {
