@@ -33,4 +33,8 @@ public class UserService {
                 .setAuthorities(Set.of(AuthorityType.ROLE_USER));
         return userRepository.save(user);
     }
+
+    public UserEntity updateUser(UserEntity userEntity) {
+        return userRepository.save(userEntity);
+    }
 }
