@@ -10,6 +10,7 @@ import connect from "react-redux/es/connect/connect";
 import Login from "./layouts/Authorization/Login/Login";
 import Signup from "./layouts/Authorization/Signup/Signup";
 import ForgotPassword from "./layouts/Authorization/ForgotPassword/ForgotPassword";
+import EmailConfirmation from "./layouts/Authorization/EmailConfirmation/EmailConfirmation";
 
 class App extends Component {
     render() {
@@ -27,6 +28,7 @@ class App extends Component {
                                 <Route exact path="/login" component={Login}/>
                                 <Route exact path="/signup" component={Signup}/>
                                 <Route exact path="/forgotPassword" component={ForgotPassword}/>
+                                <Route exact path="/emailConfirmation" component={EmailConfirmation}/>
                             </Container>
                         </div>
                         <BottomNavBar/>

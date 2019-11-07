@@ -17,7 +17,11 @@ public class AuthorizationService {
         return signupService.signup(request);
     }
 
-    public void sendEmailConfirmation(String email) {
+    public void sendEmailConfirmation(String email) throws Exception {
         signupService.sendEmailConfirmation(email);
+    }
+
+    public void confirmEmail(String email) {
+        signupService.confirmEmail(email);
     }
 }

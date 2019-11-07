@@ -8,10 +8,7 @@ import com.blogfusion.model.response.SignupResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -34,9 +31,14 @@ public class AuthorizationController {
         return new ResponseEntity<>(signupResponse, signupResponse.getHttpStatus());
     }
 
-    //TODO
-    @PostMapping("/confirm")
-    public ResponseEntity confirm(@RequestBody String email) {
+    @GetMapping("/confirm/{hash}")
+    public ResponseEntity confirm(@RequestParam("hash") String hash) {
+        authorizationService.confirmEmail(hash);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/sendConfirmation")
+    public ResponseEntity sendEmailConfirmatiom(@RequestBody String email) throws Exception {
         authorizationService.sendEmailConfirmation(email);
         return new ResponseEntity(HttpStatus.OK);
     }

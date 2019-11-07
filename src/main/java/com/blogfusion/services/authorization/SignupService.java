@@ -15,7 +15,6 @@ import com.blogfusion.util.DateUtils;
 import com.blogfusion.util.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -52,9 +51,9 @@ class SignupService {
     }
 
     public void sendEmailConfirmation(String email) throws Exception {
-        log.debug("Sending confirmation to email {}", email);
         var CANT_SEND_CONFIRMATION = "Не удалось отправить сообщение с подтверждением, " +
                 "поскольку данный email не зарегестрирован в системе";
+        log.debug("Sending confirmation to email {}", email);
 
         var user = this.getUserByEmail(email);
 
@@ -65,7 +64,8 @@ class SignupService {
         var confirmEntity = emailConfirmationRepository.findByUserEmail(email)
                 .orElse(new EmailConfirmationEntity().setUser(user));
 
-        if (confirmEntity.getUpdatedAt().isAfter(DateUtils.getCurrentLocalDateTime().minusMinutes(2))) {
+        if (confirmEntity.getUpdatedAt().isAfter(DateUtils.getCurrentLocalDateTime().minusMinutes(1))) {
+            log.debug("Attempt to send confirmation until time has passed");
             throw new ConfirmationException(new ConfirmationResponse("Время для повторного обновления хэша не пришло", "updatedAt", HttpStatus.BAD_REQUEST));
         }
 
@@ -81,6 +81,10 @@ class SignupService {
         var defaultErrorMessage = "Не удалось подтвердить email по данному хэшу.";
         var confirmEntity = emailConfirmationRepository.findByConfirmationHash(hash)
                 .orElseThrow(() -> new ConfirmationException(new ConfirmationResponse(defaultErrorMessage, "", HttpStatus.BAD_REQUEST)));
+        if (confirmEntity.getUser().getEnabled()) {
+            log.debug("attempt to confirm hash {} which was already confirmed");
+            throw new ConfirmationException(new ConfirmationResponse(defaultErrorMessage, "", HttpStatus.BAD_REQUEST));
+        }
         userService.updateUser(confirmEntity.getUser().setEnabled(true));
         log.debug("Email confirmation by hash {} complete", hash);
     }
