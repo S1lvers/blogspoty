@@ -26,6 +26,6 @@ public class EmailConfirmationEntity {
     private LocalDateTime createdAt = DateUtils.getCurrentLocalDateTime();
 
     @Column
-    private LocalDateTime updatedAt = DateUtils.getCurrentLocalDateTime();
+    private LocalDateTime updatedAt;
 
 }

@@ -18,6 +18,7 @@ public class SpaAdviser {
 
     @ExceptionHandler(SignupException.class)
     public ResponseEntity<Response> handleSignupException(SignupException ex, HttpServletRequest request, HttpServletResponse response) {
+        log.error("Resolved Signup Exception with message {}", ex.getMessage());
         return new ResponseEntity<>(ex.getResponse(), ex.getResponse().getHttpStatus());
     }
 

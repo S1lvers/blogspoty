@@ -38,7 +38,7 @@ public class EmailService {
     public void sendConfirmationEmail(String to, String confirmationHash) throws MessagingException, IOException {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("./templates/email/confirmation.html");
         String fileString = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-        String confirmationUrl = appDomain + "/confirmation/" + confirmationHash;
+        String confirmationUrl = appDomain + "/api/authorization/confirm/" + confirmationHash;
         fileString = fileString.replaceAll("confirmation_link_replace", confirmationUrl);
 
         MimeMessage msg = javaMailSender.createMimeMessage();

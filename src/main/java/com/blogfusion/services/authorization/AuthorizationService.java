@@ -13,7 +13,7 @@ public class AuthorizationService {
         this.signupService = signupService;
     }
 
-    public SignupResponse signup(SignupRequest request) {
+    public SignupResponse signup(SignupRequest request) throws Exception {
         return signupService.signup(request);
     }
 

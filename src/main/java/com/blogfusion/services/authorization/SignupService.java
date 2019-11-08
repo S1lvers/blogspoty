@@ -40,13 +40,14 @@ class SignupService {
         this.emailConfirmationRepository = emailConfirmationRepository;
     }
 
-    SignupResponse signup(SignupRequest signupRequest) {
+    SignupResponse signup(SignupRequest signupRequest) throws Exception {
         var errorMessages = this.getSignupErrorMessages(signupRequest);
         if (!Utils.isEmpty(errorMessages)) {
             return new SignupResponse(errorMessages, HttpStatus.BAD_REQUEST);
         }
         userService.createUser(signupRequest);
 
+        this.sendEmailConfirmation(signupRequest.getEmail());
         return new SignupResponse(HttpStatus.OK).setRegistredEmail(signupRequest.getEmail());
     }
 
@@ -64,7 +65,7 @@ class SignupService {
         var confirmEntity = emailConfirmationRepository.findByUserEmail(email)
                 .orElse(new EmailConfirmationEntity().setUser(user));
 
-        if (confirmEntity.getUpdatedAt().isAfter(DateUtils.getCurrentLocalDateTime().minusMinutes(1))) {
+        if (confirmEntity.getUpdatedAt() != null && confirmEntity.getUpdatedAt().isAfter(DateUtils.getCurrentLocalDateTime().minusMinutes(1))) {
             log.debug("Attempt to send confirmation until time has passed");
             throw new ConfirmationException(new ConfirmationResponse("Время для повторного обновления хэша не пришло", "updatedAt", HttpStatus.BAD_REQUEST));
         }

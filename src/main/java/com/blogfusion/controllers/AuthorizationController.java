@@ -26,13 +26,13 @@ public class AuthorizationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<SignupResponse> signup(@Valid @RequestBody SignupRequest request) {
+    public ResponseEntity<SignupResponse> signup(@Valid @RequestBody SignupRequest request) throws Exception {
         SignupResponse signupResponse = authorizationService.signup(request);
         return new ResponseEntity<>(signupResponse, signupResponse.getHttpStatus());
     }
 
     @GetMapping("/confirm/{hash}")
-    public ResponseEntity confirm(@RequestParam("hash") String hash) {
+    public ResponseEntity confirm(@PathVariable("hash") String hash) {
         authorizationService.confirmEmail(hash);
         return new ResponseEntity(HttpStatus.OK);
     }
