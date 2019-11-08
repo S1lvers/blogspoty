@@ -4,12 +4,12 @@ import connect from "react-redux/es/connect/connect";
 import AuthorizationCard from "../components/AuthorizationCard/AuthorizationCard";
 import axios from 'axios'
 import {getBadRequestErrors} from "../../../util/error-utils";
+import PropTypes from 'prop-types';
 
 class EmailConfirmation extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             email: undefined,
             emailConfirmMessage: undefined,
@@ -19,8 +19,8 @@ class EmailConfirmation extends Component {
     }
 
     componentDidMount() {
-
-        //this.sendConfirmation();
+        if (!this.props.email) this.props.history.push("/login")
+        else this.sendConfirmation();
     }
 
     sendConfirmation = () => {
@@ -103,10 +103,14 @@ class EmailConfirmation extends Component {
     }
 }
 
-EmailConfirmation.propTypes = {};
+EmailConfirmation.propTypes = {
+    email: PropTypes.string,
+};
 
 function mapStateToProps(store) {
-    return {};
+    return {
+        email: store.authorizationState.confirmationEmail
+    };
 }
 
 export default (connect(mapStateToProps)(EmailConfirmation));

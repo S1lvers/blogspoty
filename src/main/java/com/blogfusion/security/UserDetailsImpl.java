@@ -23,10 +23,6 @@ public class UserDetailsImpl implements UserDetails {
                 .collect(Collectors.toList());
     }
 
-    public long getId() {
-        return userEntity.getId();
-    }
-
     @Override
     public String getPassword() {
         return userEntity.getPassword();

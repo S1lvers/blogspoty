@@ -13,6 +13,12 @@ import ForgotPassword from "./layouts/Authorization/ForgotPassword/ForgotPasswor
 import EmailConfirmation from "./layouts/Authorization/EmailConfirmation/EmailConfirmation";
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
     render() {
         return (
             <Router>
@@ -35,7 +41,6 @@ class App extends Component {
                     </div>
                 </Switch>
             </Router>
-
         )
     }
 }

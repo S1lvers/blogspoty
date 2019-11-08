@@ -14,6 +14,7 @@ import AuthorizationCard from "../components/AuthorizationCard/AuthorizationCard
 import {isEmail, isPassword, emailErrorMessage, isUsername} from "../auth-utils";
 import axios from 'axios'
 import {getBadRequestErrors} from "../../../util/error-utils";
+import {ACTION_UPDATE_CONFIRMATION_EMAIL} from "../../../redux/reducers/authorizationState";
 
 let emailTimer;
 let passwordTimer;
@@ -114,7 +115,12 @@ class Signup extends Component {
             }
         ).then(response => {
             const data = {response};
-
+            console.log(this.state.email)
+            this.props.dispatch({
+                type: ACTION_UPDATE_CONFIRMATION_EMAIL,
+                confirmationEmail: this.state.email
+            });
+            this.props.history.push("/emailConfirmation")
         }).catch(error => {
             const response = error.response;
             if (response.status === 400) {

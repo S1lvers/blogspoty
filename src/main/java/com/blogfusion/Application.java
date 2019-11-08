@@ -24,14 +24,6 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) {
         this.onStartup();
-        try {
-            emailService.sendConfirmationEmail("tosha993@mail.ru", "fQWnifPQ2rt12FGqw");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("============EMAIL SENDED============");
     }
 
     void onStartup() {
